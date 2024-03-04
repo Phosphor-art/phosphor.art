@@ -7,6 +7,10 @@
 :root {
 
 }
+html {
+  overflow: hidden;
+  user-select: none;
+}
 
 @media (prefers-color-scheme: dark) {
   :root {

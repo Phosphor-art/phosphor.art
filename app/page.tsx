@@ -3,11 +3,11 @@ import DraggableDiv from "@/components/DraggableDiv";
 
 export default function Home() {
   return (
-    <main className="flex flex-col-reverse lg:flex-row w-screen h-screen overflow-hidden bg-yellow-300">
-      <Image src={"./logo-white.svg"} alt={"logo"} width={154} height={90} priority className="absolute top-14  right-1/2 translate-x-1/2 block lg:hidden" />
+    <main className="flex flex-col-reverse lg:flex-row w-screen h-screen">
+      <Image src={"./logo-white.svg"} alt={"logo"} width={154} height={90} draggable={false} priority className="absolute top-14  right-1/2 translate-x-1/2 block lg:hidden" />
       <section className="lg:flex-1 py-[50px] rounded-[15px] m-5 bg-white flex justify-center items-center flex-col">
         <div className="relative">
-          <Image src={"./logo.svg"} alt={"logo"} width={154} height={90} priority className="hidden lg:block" />
+          <Image src={"./logo.svg"} alt={"logo"} width={154} height={90} draggable={false} priority className="hidden lg:block" />
           <div className="lg:absolute lg:right-1/2 lg:translate-x-1/2 top-[203.741px] flex gap-[14px]">
             <div className="group p-4 bg-[#F7F7F7] hover:bg-[#F9FFCB] hover:cursor-pointer w-[49px] h-[49px] rounded-[4px] flex justify-center items-center">
               <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
