@@ -92,7 +92,7 @@ export default function Home() {
         Feel the vibe
       </DraggableDiv>
 
-      <DraggableDiv defaultPosition={{ x: "85%", y: "50%" }}>
+      <DraggableDiv defaultPosition={{x: "85%", y: "50%"}}>
         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
           <mask id="mask0_230_726" maskUnits="userSpaceOnUse" x="0" y="0" width="25"
                 height="24">
@@ -106,7 +106,7 @@ export default function Home() {
         </svg>
         Call me baby
       </DraggableDiv>
-      <AnimatedBackground />
+      <AnimatedBackground/>
     </main>
   );
 }

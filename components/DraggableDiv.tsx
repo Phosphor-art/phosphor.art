@@ -51,7 +51,7 @@ export default function DraggableDiv(Props: DraggableDivProps) {
     }, [dragging, position]);
 
     return (
-        <div className={`absolute flex gap-[25px] px-[25px] py-[18px] bg-white whitespace-nowrap shadow-md`}
+        <div className={`absolute ${dragging? 'cursor-grabbing': 'cursor-grab'} flex gap-[25px] px-[25px] py-[18px] bg-white whitespace-nowrap shadow-md`}
              style={{top: position.y, left: position.x }}
              onMouseDown={(e) => handleMouseDown(e.nativeEvent)}
              ref={element}>
