@@ -1,5 +1,6 @@
 import Image from "next/image";
 import DraggableDiv from "@/components/DraggableDiv";
+import AnimatedBackground from "@/components/AnimatedBackground";
 
 export default function Home() {
   return (
@@ -105,6 +106,7 @@ export default function Home() {
         </svg>
         Call me baby
       </DraggableDiv>
+      <AnimatedBackground />
     </main>
   );
 }
