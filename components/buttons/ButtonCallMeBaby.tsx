@@ -1,10 +1,25 @@
-import DraggableDiv from "@/components/DraggableDiv";
-import {useTheme} from "@/contexts/ThemeContext";
+import Image from "next/image";
+import {useState} from "react";
 
-export default function ButtonCallMeBaby(){
-    const { isMobileDevice } = useTheme();
+const members = [
+    {
+        name: "enzo",
+        phone: "+33 6 01 00 91 90"
+    },
+    {
+        name: "diego",
+        phone: "+33 6 11 34 76 10"
+    },
+    {
+        name: "timothee",
+        phone: "+33 6 89 65 50 88",
+    }
+]
+
+function Call(props: any) {
+    const {onClick} = props;
     return(
-        <DraggableDiv defaultPosition={{x: !isMobileDevice? "85%" : "5%", y: !isMobileDevice? "50%": "65%"}}>
+        <button onClick={onClick} className={"flex items-center gap-[25px] h-[57px] px-[25px]"}>
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
                 <mask id="mask0_230_726" maskUnits="userSpaceOnUse" x="0" y="0" width="25"
                       height="24">
@@ -17,6 +32,54 @@ export default function ButtonCallMeBaby(){
                 </g>
             </svg>
             Call me baby
-        </DraggableDiv>
+        </button>
+    )
+}
+
+function Who(props: any) {
+    const {test} = props;
+    return (
+        <div className={"flex gap-[25px] items-center h-[57px] px-[25px]"}>
+            <p>Who ?</p>
+            <div className="flex ml-[6px]">
+                {members.map((member, index) => (
+                    <button key={member.name} onClick={() => {
+                        props.setSelectedMember(member);
+                        test(2);
+                    }}>
+                        <Image src={`/profile/${member.name}.png`} width={30} height={30}
+                               alt={member.name}
+                               className={`ml-[-6px]`}/>
+                    </button>
+                ))}
+            </div>
+        </div>
+    )
+}
+
+function Phone(props: any) {
+    const {member, onClick} = props;
+    return (
+        <button className={"flex gap-3 items-center h-[57px] px-[25px]"} onClick={onClick}>
+            <Image src={`/profile/${member.name}.png`} width={30} height={30}
+                   alt={member.name}
+                   className={`ml-[-6px]`}/>
+            <a href={`tel:+${member.phone}`} className={"hover:text-blue-500"}>{member.phone}</a>
+        </button>
+    )
+}
+
+
+export default function ButtonCallMeBaby() {
+    const [selectedMember, setSelectedMember] = useState(members[0]);
+    const [currentStep, setCurrentStep] = useState(0);
+    return (
+        <div className="group absolute bg-white shadow-md rounded-full right-[20%] top-[53%]">
+            <div className="whitespace-nowrap">
+                {currentStep === 0 && <Call onClick={()=> setCurrentStep(1)} />}
+                {currentStep === 1 && <Who test={setCurrentStep} setSelectedMember={setSelectedMember} />}
+                {currentStep === 2 && <Phone member={selectedMember} onClick={()=> setCurrentStep(0)} />}
+            </div>
+        </div>
     )
 }

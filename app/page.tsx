@@ -28,6 +28,12 @@ export default function Home() {
       audioTheme2.play();
       setAudio(audioTheme2);
     }
+    if (theme === "theme3") {
+      let audioTheme3 = new Audio("/audio/theme3.mp3");
+      audioTheme3.loop = true;
+      audioTheme3.play();
+      setAudio(audioTheme3);
+    }
   }, [theme]);
   return (
       <>
@@ -98,7 +104,7 @@ export default function Home() {
               </div>
             </div>
           </section>
-          <section className="flex-1 p-5 flex items-center">
+          <section className="flex-1 p-5 flex items-center relative">
             <div className="ml-[19.5%]">
               <h1 className="text-4xl font-bold capitalize">
                 designing<br/>
@@ -116,10 +122,10 @@ export default function Home() {
               </h1>
               <p className="absolute mt-[49px] text-[25px] font-thin">Innovate, Create, Captivate with Phosphor</p>
             </div>
+            <ButtonSayHello />
+            <ButtonCallMeBaby/>
           </section>
-          <ButtonFeelTheVibe />
-          <ButtonSayHello />
-          <ButtonCallMeBaby />
+          <ButtonFeelTheVibe/>
           <AnimatedBackground/>
         </main>
       </>

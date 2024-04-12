@@ -5,10 +5,12 @@ import {useTheme} from "@/contexts/ThemeContext";
 type DraggableDivProps = {
     children: ReactNode;
     defaultPosition?: { x: string, y: string };
-    onClick?: MouseEventHandler<HTMLButtonElement>
+    onClick?: MouseEventHandler<HTMLButtonElement>;
+    className?: string;
+    draggable?: boolean;
 }
 export default function DraggableDiv(Props: DraggableDivProps) {
-    const { children, defaultPosition, onClick } = Props;
+    const { children, defaultPosition, onClick, className,draggable } = Props;
     const element = useRef<HTMLDivElement>(null);
     const [position, setPosition] = useState(defaultPosition || { x: '0', y: '0' });
     const [dragging, setDragging] = useState(false);
@@ -57,13 +59,13 @@ export default function DraggableDiv(Props: DraggableDivProps) {
 
     return (
         <div
-            className={`absolute bg-white shadow-md`}
+            className={`group absolute bg-white shadow-md ${className}`}
             style={{top: position.y, left: position.x}}
             ref={element}>
             <button onClick={onClick} className="whitespace-nowrap flex gap-[25px] px-[25px] py-[18px]">
                 {children}
             </button>
-            <svg className={`absolute left-full bottom-full ${dragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+            <svg className={`absolute left-full bottom-full ${dragging ? 'cursor-grabbing' : 'cursor-grab'} group-hover:block hidden`}
                  onMouseDown={(e) => handleMouseDown(e.nativeEvent)}
                  xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
                 <g fill="none">
